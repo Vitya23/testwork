@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+
+* {
+  margin: 0;
+}
+ul {
+  list-style: none;
+}
+h1,
+h2,
+h3,
+p {
+  font-family: "Open Sans", sans-serif;
+}
+
+.header {
+  width: 100%;
+  height: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #686868;
+}
+.header h1 {
+  color: white;
+  text-transform: uppercase;
+  font-size: 1.5em;
+}
+
+/*Меню START*/
+
+.menu {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 10rem;
+  padding: 0;
+}
+.menu ul .active {
+  border-bottom: 2px solid #68a6cf;
+}
+.menu ul li:hover {
+  border-bottom: 2px solid #68a6cf;
+}
+.menu ul li {
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/*Меню END*/
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.like {
+  display: flex;
+  align-items: center;
+}
+
+.like img {
+  width: 45px;
+  height: 45px;
+  filter: invert(100%);
+}
+
+.footer {
+  padding: 0;
+  height: 50px;
+  background-color: #686868;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+@media (max-width: 440px) {
+  .row_content p {
+    font-size: 16px;
+    color: white;
+  }
+  .table_description {
+    padding: 10px;
+  }
+}

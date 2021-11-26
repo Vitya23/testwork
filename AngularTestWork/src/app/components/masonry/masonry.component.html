@@ -1,0 +1,15 @@
+
+
+    <div class="block-content ">
+        <div class="div_content" *ngFor="let emp of service.cats">
+            <img src={{emp.img}}>
+        <div class="block_description ">
+                 <p>{{emp.title}}</p>
+                 <img class="change" id="a" [src]="emp.like ? 'assets/images/like_full.svg' : 'assets/images/like.svg'" (click)="emp.like  = !emp.like ">
+                 
+             </div>
+        </div>
+        
+    </div>
+
+

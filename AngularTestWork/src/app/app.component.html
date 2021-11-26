@@ -1,0 +1,22 @@
+<header class="header">
+  <h1>Библиотека котиков</h1>
+</header>
+
+<main class="main">
+  <div class="menu">
+      <ul>
+          <li [routerLink]="['/masonry']" routerLinkActive="active" class="page" id="pl"><p>Плитка</p> </li>
+          <li [routerLink]="['/table']" routerLinkActive="active" class="page"><p>Таблица</p></li>
+      </ul>
+  </div>
+
+  <div class="wrapper">
+    <router-outlet></router-outlet>
+      </div>
+      
+
+</main>
+<footer class="footer">
+  <p>&copy; ExpertSender</p>
+</footer>
+
