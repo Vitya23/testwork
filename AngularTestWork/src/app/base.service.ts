@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject, Subscription } from 'rxjs';
+import { CATS } from './interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BaseService {
-  cats: any[] = [
+  cats: CATS[] = [
     {
       img: 'assets/images/cats/cat1.jpg',
       title: 'Shironeko',
@@ -80,17 +80,5 @@ export class BaseService {
     },
   ];
 
-  sub: Subscription;
-  stream$: Subject<any> = new Subject<number>();
-
-  constructor() {
-    this.sub = this.stream$.subscribe((value) => {});
-  }
-  stop() {
-    this.sub.unsubscribe();
-  }
-  next() {
-    this.cats;
-    this.stream$.next(this.cats);
-  }
+  constructor() {}
 }

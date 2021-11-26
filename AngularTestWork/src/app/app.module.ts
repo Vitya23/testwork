@@ -13,6 +13,7 @@ import { BaseService } from './base.service';
   imports: [
     BrowserModule,
     RouterModule.forRoot([
+      { path: '', redirectTo: '/masonry', pathMatch: 'full' },
       { path: 'masonry', component: MasonryComponent },
       { path: 'table', component: TableComponent },
     ]),

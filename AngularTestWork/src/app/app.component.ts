@@ -1,4 +1,3 @@
-import { CATS } from './interface';
 import { Component } from '@angular/core';
 
 @Component({

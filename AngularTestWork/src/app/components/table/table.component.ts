@@ -1,6 +1,5 @@
 import { BaseService } from 'src/app/base.service';
 import { Component, OnInit } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-table',

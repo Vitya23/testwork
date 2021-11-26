@@ -1,5 +1,4 @@
-import { CATS } from './../../interface';
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BaseService } from 'src/app/base.service';
 
 @Component({
