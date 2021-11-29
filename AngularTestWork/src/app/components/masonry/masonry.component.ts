@@ -10,4 +10,12 @@ export class MasonryComponent implements OnInit {
   constructor(public service: BaseService) {}
 
   ngOnInit(): void {}
+
+  change(id: string) {
+    this.service.changeLikes(id);
+  }
+  get(type: boolean) {
+    return this.service.getLikes(type);
+    
+  }
 }

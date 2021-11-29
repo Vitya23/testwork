@@ -1,16 +1,14 @@
+<table class="content">
+    <tr class="content_row" *ngFor="let emp of service.cats">
+        <td class='content_img'><img [src]="emp.img"></td>
 
-<table class="table-content">
-    <tr class="row_content" *ngFor="let emp of service.cats">
-    <td class='cats_img'><img src={{emp.img}}></td>
-                 
-                 
-    <td class="table_description">
-    <h2>{{emp.title}}</h2>
-    <p>{{emp.text}}</p>
-    <td>      
-        <td class='like'>
-            <img class="change" id="a" [src]="emp.like ? 'assets/images/like_full.svg' : 'assets/images/like.svg'" (click)="emp.like  = !emp.like ">
+
+        <td class="content_description">
+            <h2>{{emp.title}}</h2>
+            <p>{{emp.text}}</p>
+        <td>
+        <td class='content_like'>
+            <img class="change" [src]="get(emp.like)" (click)="change(emp.id)">
         </td>
     </tr>
 </table>
-
