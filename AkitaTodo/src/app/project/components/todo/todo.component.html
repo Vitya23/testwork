@@ -1,0 +1,11 @@
+<div class=" p-md-12 w-auto mb-2  md:w-4 ">
+    <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <p-checkbox name="control" [formControl]="control" [binary]="true">
+            </p-checkbox>
+        </span>
+        <input type="text" pInputText value={{todo.title}} readonly>
+        <button type="button" pButton pRipple icon="pi pi-times" class="p-button-danger"
+            (click)="delete.emit(todo.id)"></button>
+    </div>
+</div>

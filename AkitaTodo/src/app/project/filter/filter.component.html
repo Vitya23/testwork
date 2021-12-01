@@ -1,0 +1,16 @@
+<div class="block">
+    <h2>Список заметок</h2>
+
+
+    <div class="flex flex-row flex-wrap card-container blue-container">
+        <div class="flex mr-2">
+            <p>Показывать</p>
+        </div>
+        <div class="flex ">
+            <p-dropdown [options]="filters" name="selected" optionValue="value" [formControl]="control"
+                placeholder="Все заметки" optionLabel="label" [showClear]="true">
+            </p-dropdown>
+        </div>
+
+    </div>
+</div>
