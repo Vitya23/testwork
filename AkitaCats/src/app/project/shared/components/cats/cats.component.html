@@ -1,0 +1,8 @@
+<div class="wrapp" *ngIf="cats.length;else info">
+    <app-cat *ngFor="let cat of cats" (complete)="complete.emit($event)" [cat]="cat"></app-cat>
+</div>
+<ng-template #info>
+    <p class="info">Упсс... Похоже данных нету,вы можете их добавить.<a [routerLink]="['/menu','create']"
+            routerLinkActive="active">Создать
+            котика</a></p>
+</ng-template>

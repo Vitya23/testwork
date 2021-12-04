@@ -1,0 +1,43 @@
+<main>
+    <div class="form-control">
+        <input type="text" placeholder="Найти котика..." [(ngModel)]="searchStr">
+        <button class="btn" [routerLink]="['/menu','create']">Создать котика</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Описание</th>
+                <th>Ссылка на фото</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="cats.length;else info">
+
+            <tr *ngFor="let cat of cats | searchPosts: searchStr">
+                <td>{{cat.id}}</td>
+                <td>{{cat.info.title}}</td>
+                <td>{{cat.info.description|truncate:[20,'...']}}</td>
+                <td>{{cat.info.photo|truncate:[30,'...']}}</td>
+
+                <td>
+                    <btn class='link' [routerLink]="['/menu',cat.id,'edit']">Редактировать</btn>
+                    <a (click)="remove(cat.id)">Удалить</a>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+</main>
+
+<ng-template #info>
+
+    <p class="info">Упсс... Похоже данных нету,вы можете их добавить.<a [routerLink]="['/menu','create']"
+            routerLinkActive="active">Создать
+            котика</a></p>
+
+
+</ng-template>
