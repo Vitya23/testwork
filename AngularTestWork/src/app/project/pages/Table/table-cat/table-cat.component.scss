@@ -1,0 +1,40 @@
+/*Таблица START*/
+.content_table {
+  min-width: 90vw;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.content_row {
+  margin: 20px;
+  height: 150px;
+  width: 85%;
+  background: #a3a3a3;
+  display: flex;
+  .content_img {
+    width: 150px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+    }
+  }
+}
+
+.table_description {
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  color: #fff;
+  h2 {
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,14 @@
+<table class="content_table">
+  <tr class="content_row">
+    <td class="content_img"><img [src]="cat.info.photo" /></td>
+    <td class="table_description">
+      <h2>{{ cat.info.title }}</h2>
+      <p>{{ cat.info.description | truncate: [80, "..."] }}</p>
+    </td>
+
+    <td></td>
+    <td class="content_like">
+      <input type="checkbox" [formControl]="control" name="control" />
+    </td>
+  </tr>
+</table>

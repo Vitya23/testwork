@@ -1,0 +1,71 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h1>{{ pageName }}</h1>
+
+  <div
+    class="form-control"
+    [ngClass]="{
+      invalid: form.get('title').touched && form.get('title').invalid
+    }"
+  >
+    <label for="title">Название кота:</label>
+    <input type="text" id="title" formControlName="title" />
+    <div
+      class="validation"
+      *ngIf="form.get('title').touched && form.get('title').invalid"
+    >
+      <small *ngIf="form.get('title').errors.maxlength"
+        >Имя не может привышать
+        {{ form.get("title").errors.maxlength.requiredLength }} символов</small
+      >
+      <small *ngIf="form.get('title').errors.required">Введите имя кота</small>
+    </div>
+  </div>
+  <div
+    class="form-control"
+    [ngClass]="{
+      invalid:
+        form.get('description').touched && form.get('description').invalid
+    }"
+  >
+    <label for="description">Описание:</label>
+    <input type="text" id="description" formControlName="description" />
+    <div
+      class="validation"
+      *ngIf="form.get('description').touched && form.get('description').invalid"
+    >
+      <small *ngIf="form.get('description').errors.required"
+        >Введите описание</small
+      >
+      <small *ngIf="form.get('description').errors.maxlength"
+        >Описание не может привышать
+        {{ form.get("description").errors.maxlength.requiredLength }} символов
+      </small>
+    </div>
+  </div>
+
+  <div
+    class="form-control"
+    [ngClass]="{
+      invalid: form.get('photo').touched && form.get('photo').invalid
+    }"
+  >
+    <label for="photo">Фото кота:</label>
+    <input type="text" id="photo" formControlName="photo" />
+    <div
+      class="validation"
+      *ngIf="form.get('photo').touched && form.get('photo').invalid"
+    >
+      <small *ngIf="form.get('photo').errors.required"
+        >Введите ссылку на фото</small
+      >
+    </div>
+  </div>
+  <button
+    class="btn btn-dark btn-block"
+    type="submit"
+    [disabled]="form.invalid"
+  >
+    {{ submitName }}
+  </button>
+</form>
+<router-outlet></router-outlet>
