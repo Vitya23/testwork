@@ -1,0 +1,38 @@
+/*Таблица END*/
+.content {
+  padding: 60px 0 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.content_row {
+  margin: 20px;
+  height: 150px;
+  width: 85%;
+  background: #a3a3a3;
+  display: flex;
+}
+.content_row .content_img {
+  width: 150px;
+}
+.content_row .content_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+.content_description {
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+}
+.content_description h2 {
+  color: white;
+  text-transform: uppercase;
+}
+.content_row p {
+  font-size: 20px;
+  color: white;
+}

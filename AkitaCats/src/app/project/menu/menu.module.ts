@@ -1,39 +1,42 @@
 import { SharedModule } from './../shared/shared.module';
 
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CreatePageComponent } from './create-page/create-page.component';
-import { DashBoardComponent, } from './dashboard-page/dashboard-page.component';
-import { EditPageComponent } from './edit-page/edit-page.component';
+import { DashBoardComponent } from './dashboard-page/dashboard-page.component';
 
 import { MenuLayoutComponent } from './menu-layout/menu-layout.component';
 
+const routes: Routes = [
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  {
+    path: 'dashboard',
+    component: DashBoardComponent,
+  },
+  {
+    path: 'create',
+    loadChildren: () =>
+      import('./functional/functional.module').then((m) => m.FunctionalModule),
+  },
 
+  {
+    path: ':id/edit',
+    loadChildren: () =>
+      import('./functional/functional.module').then((m) => m.FunctionalModule),
+  },
+];
 
 @NgModule({
-  declarations: [
-    CreatePageComponent,
-    DashBoardComponent,
-    EditPageComponent,
-    MenuLayoutComponent
-  ],
+  declarations: [DashBoardComponent, MenuLayoutComponent],
   imports: [
     CommonModule,
     SharedModule,
+
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild([
-      {
-      path:'',component: DashBoardComponent,},
-        { path: 'create', component: CreatePageComponent },
-        { path: ':id/edit', component: EditPageComponent },
-      
-      
-    
-    ])
+    RouterModule.forChild(routes),
   ],
   exports: [RouterModule],
 })
-export class MenuModule { }
+export class MenuModule {}

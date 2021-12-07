@@ -1,0 +1,42 @@
+.content {
+  padding: 60px 0 0;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.content_div {
+  margin: 20px;
+  position: relative;
+  min-height: 375px;
+  width: 325px;
+  background-color: grey;
+}
+
+.content_div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.content_div p {
+  font-size: 30px;
+  color: white;
+}
+
+.content_description {
+  position: absolute;
+  bottom: 0;
+  background: #a3a3a3;
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.content_description img {
+  width: 45px;
+  height: 45px;
+  filter: invert(100%);
+}

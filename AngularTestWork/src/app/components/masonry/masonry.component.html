@@ -1,0 +1,11 @@
+<div class="content ">
+    <div class="content_div" *ngFor="let emp of service.cats">
+        <img [src]="emp.img">
+        <div class="content_description ">
+            <p>{{emp.title}}</p>
+            <img class="change" [src]="get(emp.like)" (click)="change(emp.id)">
+
+        </div>
+    </div>
+
+</div>

@@ -1,28 +1,23 @@
-<app-alert></app-alert>
 <header class="header">
   <h1>Библиотека котиков</h1>
 </header>
-<div class="block">
-  <main class="main">
-    <div class="menu">
-      <ul>
-        <li [routerLink]="['/masonry']" routerLinkActive="active" class="page">
-          <p>Плитка</p>
-        </li>
-        <li [routerLink]="['/table']" routerLinkActive="active" class="page">
-          <p>Таблица</p>
-        </li>
-        <li [routerLink]="['/menu']" routerLinkActive="active" class="page">
-          <p>Меню</p>
-        </li>
-      </ul>
-    </div>
 
-    <div class="wrapper">
-      <router-outlet></router-outlet>
-    </div>
-  </main>
-  <footer class="footer">
-    <p>&copy; ExpertSender</p>
-  </footer>
-</div>
+<main class="main">
+  <div class="menu">
+      <ul>
+          <li [routerLink]="['/masonry']" routerLinkActive="active" class="page" ><p>Плитка</p> </li>
+          <li [routerLink]="['/table']" routerLinkActive="active" class="page"><p>Таблица</p></li>
+      </ul>
+  </div>
+  
+
+  <div class="wrapper">
+    <router-outlet></router-outlet>
+      </div>
+      
+
+</main>
+<footer class="footer">
+  <p>&copy; ExpertSender</p>
+</footer>
+
