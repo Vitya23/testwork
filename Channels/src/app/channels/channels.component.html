@@ -1,0 +1,18 @@
+<h2 class="title">Каналы</h2>
+<div class="block">
+  <div class="channel" *ngFor="let ch of channels; let idx">
+    <div class="circle">
+      <div
+        (click)="setState(idx)"
+        [class.active]="ch.subscribe"
+        class="icon"
+        [ngStyle]="{
+          mask: 'url(' + ch.icon + ') no-repeat center',
+          '-webkit-mask': 'url(' + ch.icon + ') no-repeat center'
+        }"
+      ></div>
+    </div>
+
+    <p>{{ ch.name }}</p>
+  </div>
+</div>
