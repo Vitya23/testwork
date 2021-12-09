@@ -18,6 +18,7 @@ const VALUE_ACCESSOR: Provider = {
 export class ChannelsComponent implements OnInit, ControlValueAccessor {
   state: boolean;
   channels: CHANNEL[];
+
   constructor(private channelService: ChannelsService) {}
 
   ngOnInit() {

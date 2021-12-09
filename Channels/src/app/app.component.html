@@ -1,5 +1,7 @@
-<app-channels [(ngModel)]="channelState"></app-channels>
+<h2 class="title">Каналы</h2>
 
-<hr />
+<form [formGroup]="form">
+  <app-channels formControlName="subscription"></app-channels>
+</form>
 
-<p>{{ channelState }}</p>
+<p>{{ form.value.subscription }}</p>
