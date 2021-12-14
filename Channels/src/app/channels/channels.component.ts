@@ -46,10 +46,15 @@ export class ChannelsComponent implements OnInit, ControlValueAccessor {
         return new FormControl(channel);
       })
     );
+    console.log(this.formArray.value);
 
     this.formArray.valueChanges.subscribe((res) => {
       this.onChange(res);
     });
+  }
+
+  active(name) {
+    return this.formArray.value.includes(name.toLowerCase());
   }
 
   registerOnChange(fn: (value: any) => void) {

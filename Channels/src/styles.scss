@@ -29,24 +29,3 @@ body {
   font-weight: 500;
   font-size: 20px;
 }
-
-.circle {
-  background: white;
-  clip-path: circle(50%);
-  height: 50px;
-  width: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px #d8dae0 solid;
-  border-radius: 50%;
-
-  &:hover {
-    cursor: pointer;
-    border: 1px #35dbaf solid;
-
-    & path {
-      fill: #1dc296;
-    }
-  }
-}

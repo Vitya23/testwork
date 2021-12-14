@@ -3,6 +3,31 @@ p {
   font-size: 13px;
 }
 
+.circle {
+  background: white;
+  clip-path: circle(50%);
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px #d8dae0 solid;
+  border-radius: 50%;
+
+  &.active {
+    border: 1px #35dbaf solid;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border: 1px #35dbaf solid;
+
+    & path {
+      fill: #1dc296;
+    }
+  }
+}
+
 input[type="checkbox"] {
   display: block;
   cursor: pointer;

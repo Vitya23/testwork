@@ -1,9 +1,9 @@
 <div class="block">
   <div class="channel" *ngFor="let ch of channels">
-    <div class="circle">
+    <div [class.active]="active(ch.name)" class="circle">
       <input
         type="checkbox"
-        [checked]="formArray.value.includes(ch.name.toLowerCase())"
+        [checked]="active(ch.name)"
         [value]="ch.name.toLowerCase()"
         [ngStyle]="{
           mask: 'url(' + ch.icon + ') no-repeat center',
