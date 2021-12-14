@@ -1,7 +1,10 @@
 <h2 class="title">Каналы</h2>
-
 <form [formGroup]="form">
-  <app-channels formControlName="subscription"></app-channels>
+  <app-channels formControlName="channels"></app-channels>
 </form>
 
-<p>{{ form.value.subscription }}</p>
+<pre>
+  {{ form.value | json }}
+</pre>
+
+<button (click)="send()">Send</button>

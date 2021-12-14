@@ -1,3 +1,4 @@
+import { ChannelsService } from './channels.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -8,14 +9,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   form: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private ch: ChannelsService) {}
   ngOnInit() {
     this.form = this.fb.group({
-      subscription: false,
+      channels: this.fb.control(this.get()),
     });
   }
-
-  click() {
-    console.log(this.form.value);
+  get() {
+    return this.ch.get().channels;
+  }
+  send() {
+    this.ch.send(this.form.value);
   }
 }

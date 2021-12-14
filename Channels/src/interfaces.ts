@@ -1,9 +1,8 @@
 export interface CHANNELS {
-  channels: [];
+  channels: string[];
 }
 
 export interface CHANNEL {
   name: string;
   icon: string;
-  subscribe: boolean;
 }

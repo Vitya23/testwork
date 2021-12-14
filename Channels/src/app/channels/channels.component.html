@@ -1,17 +1,17 @@
 <div class="block">
-  <div class="channel" *ngFor="let ch of channels; let idx">
+  <div class="channel" *ngFor="let ch of channels">
     <div class="circle">
-      <div
-        (click)="setState(idx)"
-        [class.active]="ch.subscribe"
-        class="icon"
+      <input
+        type="checkbox"
+        [checked]="formArray.value.includes(ch.name.toLowerCase())"
+        [value]="ch.name.toLowerCase()"
         [ngStyle]="{
           mask: 'url(' + ch.icon + ') no-repeat center',
           '-webkit-mask': 'url(' + ch.icon + ') no-repeat center'
         }"
-      ></div>
+        (change)="change($event)"
+      />
     </div>
-
     <p>{{ ch.name }}</p>
   </div>
 </div>
