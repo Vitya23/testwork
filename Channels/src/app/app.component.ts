@@ -12,12 +12,11 @@ export class AppComponent implements OnInit {
   constructor(private fb: FormBuilder, private ch: ChannelsService) {}
   ngOnInit() {
     this.form = this.fb.group({
-      channels: this.fb.control(this.get()),
+      channels: this.fb.control([]),
     });
+    this.form.patchValue(this.ch.get());
   }
-  get() {
-    return this.ch.get().channels;
-  }
+
   send() {
     this.ch.send(this.form.value);
   }
