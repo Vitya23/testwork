@@ -17,34 +17,39 @@ p {
   &.active {
     border: 1px #35dbaf solid;
   }
-
   &:hover {
     cursor: pointer;
     border: 1px #35dbaf solid;
-
-    & path {
-      fill: #1dc296;
-    }
   }
 }
 
-input[type="checkbox"] {
+.check_input {
   display: block;
   cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.check_box {
+  background: white;
+  position: absolute;
   width: 100%;
   height: 100%;
-  background-color: red;
-  -webkit-appearance: none;
-  outline: 0;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-  &:not(:checked) {
-    background: #8b8f9e;
-  }
-  &:checked {
+
+  border-radius: 50%;
+}
+
+.check_input:checked + .circle {
+  border: 1px #35dbaf solid;
+  .check_box {
     background: #1dc296;
   }
+}
+.check_input:not(:checked) + .circle .check_box {
+  background: #8b8f9e;
+}
+
+.check_input:not(:checked):focus + .circle {
+  border: 1px #35dbaf solid;
 }
 
 .channel {

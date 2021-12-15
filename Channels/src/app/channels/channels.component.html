@@ -1,17 +1,24 @@
 <div class="block">
-  <div class="channel" *ngFor="let ch of channels">
-    <div [class.active]="active(ch.name)" class="circle">
+  <div class="channel" *ngFor="let ch of channels; index as i">
+    <label>
       <input
+        class="check_input"
         type="checkbox"
-        [checked]="active(ch.name)"
+        [checked]="formArray.value.includes(ch.name.toLowerCase())"
         [value]="ch.name.toLowerCase()"
-        [ngStyle]="{
-          mask: 'url(' + ch.icon + ') no-repeat center',
-          '-webkit-mask': 'url(' + ch.icon + ') no-repeat center'
-        }"
         (change)="change($event)"
       />
-    </div>
+
+      <span class="circle">
+        <span
+          class="check_box"
+          [ngStyle]="{
+            mask: 'url(' + ch.icon + ') no-repeat center',
+            '-webkit-mask': 'url(' + ch.icon + ') no-repeat center'
+          }"
+        ></span>
+      </span>
+    </label>
     <p>{{ ch.name }}</p>
   </div>
 </div>

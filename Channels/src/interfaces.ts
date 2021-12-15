@@ -1,8 +1,8 @@
-export interface CHANNELS {
+export interface Channels {
   channels: string[];
 }
 
-export interface CHANNEL {
+export interface Channel {
   name: string;
   icon: string;
 }

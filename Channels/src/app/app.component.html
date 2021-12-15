@@ -2,9 +2,3 @@
 <form [formGroup]="form">
   <app-channels formControlName="channels"></app-channels>
 </form>
-
-<pre>
-  {{ form.value | json }}
-</pre>
-
-<button (click)="send()">Send</button>

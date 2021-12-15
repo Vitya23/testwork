@@ -1,4 +1,4 @@
-import { CHANNEL } from './../../interfaces';
+import { Channel } from './../../interfaces';
 import { ChannelsService } from './../channels.service';
 import { Component, forwardRef, OnInit, Provider } from '@angular/core';
 import {
@@ -6,6 +6,7 @@ import {
   NG_VALUE_ACCESSOR,
   FormArray,
   FormControl,
+  FormGroup,
 } from '@angular/forms';
 
 const VALUE_ACCESSOR: Provider = {
@@ -21,47 +22,44 @@ const VALUE_ACCESSOR: Provider = {
   providers: [VALUE_ACCESSOR],
 })
 export class ChannelsComponent implements OnInit, ControlValueAccessor {
-  channels: CHANNEL[];
-  formArray: FormArray;
+  channels: Channel[];
+  formArray = new FormArray([]);
 
   constructor(private channelService: ChannelsService) {}
 
   ngOnInit() {
     this.channels = this.channelService.channelsDATA;
   }
+
   private onChange = (value: any) => {};
-  private onTouched = (value: any) => {};
+  private onTouched = (value: Channel) => {};
 
   change(e) {
+    let control = this.formArray;
     if (e.target.checked) {
-      this.formArray.push(new FormControl(e.target.value));
+      control.push(new FormControl(e.target.value));
     } else {
-      this.formArray.removeAt(this.formArray.value.indexOf(e.target.value));
+      control.removeAt(this.formArray.value.indexOf(e.target.value));
     }
+
+    this.onChange(control.value);
   }
 
-  writeValue(obj: any): void {
+  writeValue(obj: Channel[]): void {
+    console.log('start value');
     this.formArray = new FormArray(
       obj.map((channel) => {
+        console.log(channel);
         return new FormControl(channel);
       })
     );
-    console.log(this.formArray.value);
-
-    this.formArray.valueChanges.subscribe((res) => {
-      this.onChange(res);
-    });
   }
 
-  active(name) {
-    return this.formArray.value.includes(name.toLowerCase());
-  }
-
-  registerOnChange(fn: (value: any) => void) {
+  registerOnChange(fn: (value: Channel) => void) {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: (value: any) => void) {
+  registerOnTouched(fn: (value: Channel) => void) {
     this.onTouched = fn;
   }
 

@@ -1,11 +1,11 @@
-import { CHANNEL, CHANNELS } from './../interfaces';
+import { Channel, Channels } from './../interfaces';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChannelsService {
-  channelsDATA: CHANNEL[] = [
+  channelsDATA: Channel[] = [
     {
       name: 'Email',
       icon: 'assets/svg/email.svg',
@@ -34,11 +34,11 @@ export class ChannelsService {
 
   constructor() {}
 
-  get(): CHANNELS {
+  get(): Channels {
     return { channels: ['telegram', 'email'] };
   }
 
-  send(form): CHANNELS {
+  send(form): Channels {
     console.log(form);
     return form;
   }
