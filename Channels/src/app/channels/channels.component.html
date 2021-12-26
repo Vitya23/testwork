@@ -5,8 +5,7 @@
         class="check_input"
         type="checkbox"
         [checked]="formArray.value.includes(ch.name.toLowerCase())"
-        [value]="ch.name.toLowerCase()"
-        (change)="change($event)"
+        (change)="change($event, ch.name)"
       />
 
       <span class="circle">

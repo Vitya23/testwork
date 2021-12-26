@@ -16,8 +16,4 @@ export class AppComponent implements OnInit {
     });
     this.form.patchValue(this.ch.get());
   }
-
-  send() {
-    this.ch.send(this.form.value);
-  }
 }

@@ -37,9 +37,4 @@ export class ChannelsService {
   get(): Channels {
     return { channels: ['telegram', 'email'] };
   }
-
-  send(form): Channels {
-    console.log(form);
-    return form;
-  }
 }

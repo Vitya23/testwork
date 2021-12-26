@@ -24,32 +24,40 @@ const VALUE_ACCESSOR: Provider = {
 export class ChannelsComponent implements OnInit, ControlValueAccessor {
   channels: Channel[];
   formArray = new FormArray([]);
+  form: FormGroup;
 
   constructor(private channelService: ChannelsService) {}
 
   ngOnInit() {
+    this.form = new FormGroup({
+      Email: new FormControl('email'),
+      SMS: new FormControl('sms'),
+      Push: new FormControl('push'),
+      Telegram: new FormControl('telegram'),
+      Viber: new FormControl('viber'),
+      Whatsapp: new FormControl('whatsapp'),
+    });
     this.channels = this.channelService.channelsDATA;
   }
 
-  private onChange = (value: any) => {};
+  private onChange = (value: Channel) => {};
   private onTouched = (value: Channel) => {};
 
-  change(e) {
-    let control = this.formArray;
+  change(e, name) {
+    let control = this.form.get(name).value;
     if (e.target.checked) {
-      control.push(new FormControl(e.target.value));
+      this.formArray.push(new FormControl(control));
     } else {
-      control.removeAt(this.formArray.value.indexOf(e.target.value));
+      this.formArray.removeAt(this.formArray.value.indexOf(control));
     }
 
-    this.onChange(control.value);
+    this.onChange(this.formArray.value);
   }
 
   writeValue(obj: Channel[]): void {
-    console.log('start value');
+    console.log(obj);
     this.formArray = new FormArray(
       obj.map((channel) => {
-        console.log(channel);
         return new FormControl(channel);
       })
     );
