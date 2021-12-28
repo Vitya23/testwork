@@ -16,4 +16,8 @@ export class AppComponent implements OnInit {
     });
     this.form.patchValue(this.ch.get());
   }
+
+  click() {
+    console.log(this.form.value.channels);
+  }
 }

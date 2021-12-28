@@ -1,12 +1,12 @@
 import { Channel } from './../../interfaces';
-import { ChannelsService } from './../channels.service';
+import { channelsDATA } from './config';
 import { Component, forwardRef, OnInit, Provider } from '@angular/core';
 import {
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
   FormArray,
-  FormControl,
   FormGroup,
+  FormBuilder,
 } from '@angular/forms';
 
 const VALUE_ACCESSOR: Provider = {
@@ -23,44 +23,46 @@ const VALUE_ACCESSOR: Provider = {
 })
 export class ChannelsComponent implements OnInit, ControlValueAccessor {
   channels: Channel[];
-  formArray = new FormArray([]);
   form: FormGroup;
 
-  constructor(private channelService: ChannelsService) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.form = new FormGroup({
-      Email: new FormControl('email'),
-      SMS: new FormControl('sms'),
-      Push: new FormControl('push'),
-      Telegram: new FormControl('telegram'),
-      Viber: new FormControl('viber'),
-      Whatsapp: new FormControl('whatsapp'),
+    this.channels = channelsDATA;
+
+    this.form = this.fb.group({
+      channels: this.fb.array(this.channels.map((x) => x.name.toLowerCase())),
     });
-    this.channels = this.channelService.channelsDATA;
   }
 
   private onChange = (value: Channel) => {};
   private onTouched = (value: Channel) => {};
 
-  change(e, name) {
-    let control = this.form.get(name).value;
-    if (e.target.checked) {
-      this.formArray.push(new FormControl(control));
-    } else {
-      this.formArray.removeAt(this.formArray.value.indexOf(control));
+  change(i) {
+    const checkboxControl = this.form.controls.channels as FormArray;
+
+    if (checkboxControl.controls[i].value) {
+      checkboxControl.controls[i].patchValue(
+        this.channels[i].name.toLowerCase(),
+        {
+          emitEvent: false,
+        }
+      );
     }
 
-    this.onChange(this.formArray.value);
+    this.onChange(checkboxControl.value.filter((value) => !!value));
   }
 
-  writeValue(obj: Channel[]): void {
-    console.log(obj);
-    this.formArray = new FormArray(
-      obj.map((channel) => {
-        return new FormControl(channel);
-      })
-    );
+  writeValue(obj: string[]): void {
+    const checkboxControl = this.form.controls.channels as FormArray;
+
+    checkboxControl.controls.map((e, i) => {
+      if (obj.length > 0 && obj.includes(e.value)) {
+        return;
+      } else {
+        checkboxControl.controls[i].patchValue(false);
+      }
+    });
   }
 
   registerOnChange(fn: (value: Channel) => void) {

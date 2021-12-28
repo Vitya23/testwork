@@ -2,3 +2,6 @@
 <form [formGroup]="form">
   <app-channels formControlName="channels"></app-channels>
 </form>
+{{ form.value.channels }}
+
+<button (click)="click()">click</button>

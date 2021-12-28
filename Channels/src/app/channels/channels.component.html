@@ -1,13 +1,16 @@
-<div class="block">
-  <div class="channel" *ngFor="let ch of channels; index as i">
+<div class="block" [formGroup]="form">
+  <div
+    class="channel"
+    formArrayName="channels"
+    *ngFor="let ch of channels; index as i"
+  >
     <label>
       <input
+        [formControlName]="i"
         class="check_input"
         type="checkbox"
-        [checked]="formArray.value.includes(ch.name.toLowerCase())"
-        (change)="change($event, ch.name)"
+        (change)="change(i)"
       />
-
       <span class="circle">
         <span
           class="check_box"
